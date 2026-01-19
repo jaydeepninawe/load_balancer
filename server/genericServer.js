@@ -1,5 +1,3 @@
-// genericServer.js
-const mongoose = require('mongoose');
 const { fork } = require('child_process');
 const path = require('path');
 require('dotenv').config();
@@ -34,7 +32,7 @@ const start = async () => {
   setInterval(async () => {
     const updatedServers = await Server.find({ isActive: true });
     updatedServers.forEach(startServerProcess);
-  }, 10000); // Poll every 10 seconds
+  }, 10000); 
 };
 
 start();

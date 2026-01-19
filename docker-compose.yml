@@ -1,0 +1,50 @@
+services:
+  admin:
+    build: ./admin
+    container_name: admin-service
+    ports:
+      - "${ADMIN_PORT}:${ADMIN_PORT}"
+    env_file:
+      - ./admin/.env
+    restart: unless-stopped
+
+  balancer:
+    build: ./balancer
+    container_name: load-balancer
+    ports:
+      - "${BALANCER_PORT}:${BALANCER_PORT}"
+    env_file:
+      - ./balancer/.env
+    restart: unless-stopped
+    depends_on:
+      - admin
+      - generic-server-1
+      - app-server-2
+
+  generic-server-1:
+    build: ./server
+    container_name: generic-server-1
+    ports:
+      - "${GENERIC_PORT}:${GENERIC_PORT}"
+    env_file:
+      - ./server/.env
+    environment:
+      - PORT=${GENERIC_PORT}
+      - REGION=DEFAULT
+    restart: unless-stopped
+    depends_on:
+      - admin
+
+  app-server-2:
+    build: ./server
+    container_name: app-server-2
+    ports:
+      - "${HEALTH_CHECK}:${HEALTH_CHECK}"
+    env_file:
+      - ./server/.env
+    environment:
+      - PORT=${HEALTH_CHECK}
+      - REGION=US
+    restart: unless-stopped
+    depends_on:
+      - admin
