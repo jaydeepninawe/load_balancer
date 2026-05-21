@@ -59,6 +59,8 @@ This project demonstrates how a load balancer distributes incoming traffic acros
 
 - 🔁 Round-Robin traffic distribution
 - 🐳 Fully Dockerized setup
+- ⚖️ Rate limiting
+- 🩺 Active health checks for backend servers
 - ⚡ Lightweight and fast
 - 🧩 Modular and extensible architecture
 - 🛠️ Configurable backend services via `docker-compose`
@@ -151,10 +153,8 @@ function getNextServer(servers) {
 ## 📈 Future Improvements
 
 - 🔥 Least Connections algorithm
-- 🩺 Active health checks for backend servers
 - 🔐 HTTPS / SSL termination
 - 📊 Metrics & monitoring (Prometheus/Grafana)
-- ⚖️ Rate limiting
 - 🌍 Kubernetes deployment support
 - 🧠 Sticky sessions
 - 🚦 Circuit breaker pattern
