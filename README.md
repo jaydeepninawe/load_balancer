@@ -161,17 +161,6 @@ function getNextServer(servers) {
 
 ---
 
-## 🎯 What This Demonstrates to Recruiters
-
-- Strong understanding of distributed systems fundamentals
-- Backend networking knowledge
-- Infrastructure-level problem solving
-- Docker & containerized architecture design
-- Modular and scalable application design
-- Production-oriented thinking
-
----
-
 ## 🤝 Contributing
 
 Pull requests are welcome.  
